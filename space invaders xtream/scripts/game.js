@@ -134,8 +134,9 @@ var shield = {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     },
-    explode: function () {
+    explode: function (enemy) {
         console.log("shield hit");
+        score -= enemy.weight;
         this.color = "red"
         setTimeout(() => {
             this.color = "#222239"
@@ -174,7 +175,7 @@ function handleCollisions() {
         if (collides(enemies[enemy], shield)) {
             shieldHealth--;
 
-            shield.explode();
+            shield.explode(enemies[enemy]);
             enemies[enemy].explode();
             return true;
         }
