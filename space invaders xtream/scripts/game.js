@@ -1,6 +1,7 @@
 var CANVAS_WIDTH = 480
 var CANVAS_HEIGHT = 360
 var level = 1;
+var levelOffset;
 var score = 0;
 var shieldHealth = 3;
 // lives --used to denote how many enemies can actually hit the shield before gameover
@@ -89,11 +90,6 @@ function Enemy(I) {
         Sound.play("explosion");
         this.active = false;
         ctx.drawImage(img,this.x,this.y);
-        // this.sprite = Sprite("explosion");
-        // setTimeout(() => {
-        //     this.active = false
-        // }, 100);
-        //extra credits for explosion graphics
     }
 
     I.draw = function () {
@@ -161,7 +157,7 @@ function handleCollisions() {
                 console.log("enemy hit")
                 playerBullets[bullet].active = false;
                 enemies[enemy].explode();
-                break;
+                return true;
             }
         }
     }
@@ -170,7 +166,7 @@ function handleCollisions() {
         if (collides(enemies[enemy], player)) {
             player.explode();
             enemies[enemy].explode();
-            break;
+            return true;
         }
     }
 
@@ -180,7 +176,7 @@ function handleCollisions() {
 
             shield.explode();
             enemies[enemy].explode();
-            break;
+            return true;
         }
     }
 
@@ -291,7 +287,8 @@ function draw_level() {
     ctx.font = "16px monospace";
     ctx.fillStyle = "#0095DD";
     level = (score - (score % 200)) / 200;
-    ctx.fillText("Level: " + level, CANVAS_WIDTH / 2 - 40, 20)
+    levelOffset = level + 1
+    ctx.fillText("Level: " + levelOffset , CANVAS_WIDTH / 2 - 40, 20)
 }
 
 
@@ -302,6 +299,7 @@ function draw() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     var grd = ctx.createLinearGradient(0, 0, 0, 1 + 120 * level);
     //var grd=ctx.createRadialGradient(90,50,5,90,60,200);
+    // for more varied background
     grd.addColorStop(0, "#000000");
     grd.addColorStop(1, "#53346D");
 

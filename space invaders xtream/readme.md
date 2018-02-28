@@ -93,7 +93,7 @@ THis alert box displays the score and the level.
 ###### I. Explosion sprite
 
 whenever the the player is hit, the sprite is dynamically changed to explosion.
-`I.explode = function() {
+`I.explode = function() {`
 `        ...`
 `        Sound.play("explosion");`
 `        this.sprite = Sprite("explosion");`
@@ -110,3 +110,7 @@ for enemy explosion this game uses 'canvas.drawimage' function.
 ###### J. When shield is hit it turns red and after 3 hits another hit is game over.
 ###### K. The shield also turns red and progressively empty as more enemy hit it.
 
+#### Bugs
+
+1. Multiple hits by bullets even after first hit.
+2. Enemy collision with the base increases score.
