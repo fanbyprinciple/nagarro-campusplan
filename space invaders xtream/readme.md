@@ -83,7 +83,7 @@ The background of the game changes as we progress in the level.
 So as difficulty increases aptly screen also goes darker.
 
 ## Features added - 2
-![gameover.png](screenshots/gameOverScreen.png "Game over screen")
+![gameover.png](screenshots/gameOverScreen.jpg "Game over screen")
 
 H. Game over alert
 
